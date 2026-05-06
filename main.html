@@ -1,921 +1,1725 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mangalam Gas Agency – Eruvadi</title>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,700;0,900;1,700&display=swap" rel="stylesheet">
-<style>
-  :root {
-    --yellow: #FFD200;
-    --yellow-dark: #F5B800;
-    --yellow-light: #FFF3B0;
-    --blue: #003F8A;
-    --blue-mid: #0055B8;
-    --blue-light: #1A7FD4;
-    --blue-pale: #E8F1FB;
-    --white: #FFFFFF;
-    --off-white: #FAFAF5;
-    --dark: #001A3A;
-    --muted: #5A7299;
-    --border-y: rgba(255,210,0,0.35);
-    --border-b: rgba(0,63,138,0.18);
-  }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
-  html { scroll-behavior:smooth; }
+  <title>Mangalam Gas Agency – Eruvadi</title>
 
-  body {
-    font-family:'Plus Jakarta Sans', sans-serif;
-    background:var(--off-white);
-    color:var(--dark);
-    overflow-x:hidden;
-  }
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,700;0,900;1,700&display=swap" rel="stylesheet">
 
-  /* ── NAV ── */
-  nav {
-    position:fixed; top:0; left:0; right:0; z-index:200;
-    display:flex; align-items:center; justify-content:space-between;
-    padding:0 5vw;
-    height:72px;
-    background:var(--blue);
-    border-bottom:3px solid var(--yellow);
-    box-shadow:0 4px 30px rgba(0,20,60,.25);
-  }
-  .nav-brand { display:flex; align-items:center; gap:.9rem; }
-  .flame-icon {
-    width:44px; height:44px;
-    background:var(--yellow);
-    border-radius:50% 50% 50% 10%;
-    display:flex; align-items:center; justify-content:center;
-    font-size:1.4rem;
-    animation:flicker 2.5s ease-in-out infinite;
-    flex-shrink:0;
-  }
-  @keyframes flicker {
-    0%,100%{transform:scaleY(1) rotate(-2deg);}
-    30%{transform:scaleY(1.08) rotate(2deg);}
-    60%{transform:scaleY(0.95) rotate(-1deg);}
-  }
-  .brand-text span:first-child {
-    display:block;
-    font-family:'Bebas Neue',sans-serif;
-    font-size:1.5rem; letter-spacing:.07em;
-    color:var(--yellow);
-  }
-  .brand-text span:last-child {
-    font-size:.65rem; color:rgba(255,255,255,.65);
-    letter-spacing:.14em; text-transform:uppercase;
-  }
-  .nav-links { display:flex; align-items:center; gap:2.2rem; list-style:none; }
-  .nav-links a {
-    text-decoration:none; color:rgba(255,255,255,.75);
-    font-size:.88rem; font-weight:600; letter-spacing:.04em;
-    transition:color .2s;
-  }
-  .nav-links a:hover { color:var(--yellow); }
-  .nav-cta {
-    padding:.6rem 1.6rem;
-    background:var(--yellow);
-    border:none; border-radius:2rem;
-    color:var(--blue); font-weight:800; font-size:.85rem;
-    letter-spacing:.04em; cursor:pointer;
-    transition:transform .2s, box-shadow .2s;
-    text-decoration:none;
-  }
-  .nav-cta:hover { transform:translateY(-2px); box-shadow:0 8px 20px rgba(255,210,0,.5); }
+  <style>
+    :root {
+      --yellow: #FFD200;
+      --yellow-dark: #F5B800;
+      --yellow-light: #FFF3B0;
+      --blue: #003F8A;
+      --blue-mid: #0055B8;
+      --blue-light: #1A7FD4;
+      --blue-pale: #E8F1FB;
+      --white: #FFFFFF;
+      --off-white: #FAFAF5;
+      --dark: #001A3A;
+      --muted: #5A7299;
+      --border-b: rgba(0,63,138,0.18);
+    }
 
-  /* ── HERO ── */
-  .hero {
-    min-height:100vh;
-    background:var(--blue);
-    display:flex; flex-direction:column; justify-content:center;
-    padding:0 5vw; padding-top:72px;
-    position:relative; overflow:hidden;
-  }
-  .hero-dots {
-    position:absolute; inset:0;
-    background-image: radial-gradient(rgba(255,210,0,.12) 1.5px, transparent 1.5px);
-    background-size:30px 30px;
-    pointer-events:none;
-  }
-  .hero-glow {
-    position:absolute; top:-10%; right:-5%;
-    width:600px; height:600px; border-radius:50%;
-    background:radial-gradient(circle, rgba(26,127,212,.3) 0%, transparent 70%);
-    pointer-events:none;
-  }
-  .hero-arc {
-    position:absolute; bottom:-2px; left:0; right:0;
-    height:80px;
-    background:var(--off-white);
-    clip-path:ellipse(55% 100% at 50% 100%);
-  }
-  .hero-content { position:relative; z-index:1; max-width:680px; }
-  .hero-badge {
-    display:inline-flex; align-items:center; gap:.5rem;
-    padding:.38rem 1rem;
-    background:rgba(255,210,0,.15);
-    border:1px solid rgba(255,210,0,.4);
-    border-radius:2rem;
-    font-size:.72rem; letter-spacing:.12em; text-transform:uppercase;
-    color:var(--yellow); margin-bottom:2rem;
-    animation:fadeUp .8s ease both;
-  }
-  .hero-badge span { width:6px; height:6px; border-radius:50%; background:var(--yellow); animation:pulse 2s infinite; }
-  @keyframes pulse { 0%,100%{opacity:1;} 50%{opacity:.3;} }
-  .hero h1 {
-    font-family:'Playfair Display',serif;
-    font-size:clamp(3rem,8vw,6.5rem);
-    font-weight:900; line-height:.95;
-    color:var(--white);
-    animation:fadeUp .9s .1s ease both;
-  }
-  .hero h1 em {
-    font-style:italic;
-    color:var(--yellow);
-  }
-  .hero-sub {
-    margin-top:1.8rem;
-    font-size:1.05rem; color:rgba(255,255,255,.65);
-    font-weight:400; line-height:1.75; max-width:480px;
-    animation:fadeUp .9s .2s ease both;
-  }
-  .hero-actions {
-    margin-top:2.5rem;
-    display:flex; gap:1rem; flex-wrap:wrap;
-    animation:fadeUp .9s .3s ease both;
-  }
-  .btn-primary {
-    padding:.9rem 2rem;
-    background:var(--yellow);
-    border:none; border-radius:3rem;
-    color:var(--blue); font-weight:800; font-size:.95rem;
-    cursor:pointer; text-decoration:none;
-    transition:transform .2s, box-shadow .2s;
-    display:inline-flex; align-items:center; gap:.5rem;
-  }
-  .btn-primary:hover { transform:translateY(-3px); box-shadow:0 12px 28px rgba(255,210,0,.45); }
-  .btn-ghost {
-    padding:.9rem 2rem;
-    border:1.5px solid rgba(255,255,255,.3);
-    border-radius:3rem;
-    color:var(--white); font-weight:600; font-size:.95rem;
-    cursor:pointer; text-decoration:none;
-    transition:border-color .2s, background .2s;
-    display:inline-flex; align-items:center; gap:.5rem;
-    background:transparent;
-  }
-  .btn-ghost:hover { border-color:var(--yellow); background:rgba(255,210,0,.08); color:var(--yellow); }
-  .hero-stats {
-    position:absolute; right:5vw; bottom:15vh; z-index:1;
-    display:flex; flex-direction:column; gap:1.5rem;
-    animation:fadeLeft .9s .4s ease both;
-  }
-  .stat { text-align:right; border-right:3px solid var(--yellow); padding-right:1.2rem; }
-  .stat-num {
-    font-family:'Bebas Neue',sans-serif;
-    font-size:2.8rem; line-height:1; color:var(--white);
-  }
-  .stat-label { font-size:.7rem; color:rgba(255,255,255,.5); letter-spacing:.1em; text-transform:uppercase; }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-  /* ── MARQUEE ── */
-  .marquee-wrap {
-    overflow:hidden;
-    background:var(--yellow);
-    padding:.7rem 0; position:relative; z-index:1;
-  }
-  .marquee-track {
-    display:flex; gap:0; width:max-content;
-    animation:marquee 22s linear infinite;
-  }
-  .marquee-track span {
-    font-family:'Bebas Neue',sans-serif;
-    font-size:1.05rem; letter-spacing:.1em;
-    color:var(--blue); padding:0 2.5rem;
-  }
-  .marquee-track span::before { content:'✦ '; }
-  @keyframes marquee { from{transform:translateX(0);} to{transform:translateX(-50%);} }
+    html {
+      scroll-behavior: smooth;
+    }
 
-  /* ── SECTION COMMON ── */
-  section { position:relative; z-index:1; }
-  .section-label {
-    font-size:.7rem; letter-spacing:.2em; text-transform:uppercase;
-    color:var(--blue-light); margin-bottom:.8rem; font-weight:700;
-  }
-  .section-title {
-    font-family:'Playfair Display',serif;
-    font-size:clamp(1.9rem,3.5vw,3rem);
-    font-weight:900; line-height:1.1; color:var(--dark);
-  }
-  .section-title em { font-style:italic; color:var(--blue-mid); }
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: var(--off-white);
+      color: var(--dark);
+      overflow-x: hidden;
+    }
 
-  /* ── ABOUT ── */
-  .about {
-    padding:9rem 5vw 8rem;
-    display:grid; grid-template-columns:1fr 1fr; gap:6rem; align-items:center;
-    background:var(--off-white);
-  }
-  .about-visual { position:relative; }
-  .about-img-frame {
-    aspect-ratio:4/5;
-    border-radius:1.5rem 1.5rem 1.5rem .25rem;
-    background:linear-gradient(145deg, var(--blue) 0%, var(--blue-mid) 50%, var(--blue-light) 100%);
-    border:3px solid var(--yellow);
-    overflow:hidden; position:relative;
-    box-shadow:0 24px 60px rgba(0,63,138,.25);
-  }
-  .about-img-inner {
-    width:100%;height:100%;
-    display:flex;align-items:center;justify-content:center;flex-direction:column;
-    opacity:.5; gap:1rem;
-  }
-  .about-img-inner .big-icon { font-size:7rem; }
-  .about-img-inner .label {
-    font-family:'Bebas Neue',sans-serif;
-    font-size:1.4rem; letter-spacing:.12em; color:var(--yellow);
-  }
-  .about-img-inner .sub { font-size:.78rem; color:rgba(255,255,255,.6); }
-  .about-badge-float {
-    position:absolute; bottom:-1.5rem; right:-1.5rem;
-    background:var(--yellow);
-    border-radius:1.2rem;
-    padding:1.2rem 1.8rem;
-    color:var(--blue); font-weight:800;
-    box-shadow:0 16px 40px rgba(255,210,0,.4);
-    border:3px solid var(--blue);
-  }
-  .about-badge-float .big { font-family:'Bebas Neue',sans-serif; font-size:2.4rem; line-height:1; }
-  .about-badge-float .small { font-size:.68rem; letter-spacing:.1em; text-transform:uppercase; }
-  .about-text p { color:var(--muted); font-size:1rem; line-height:1.8; margin-top:1.2rem; }
-  .about-pillars {
-    display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin-top:2rem;
-  }
-  .pillar {
-    padding:1.3rem;
-    border:2px solid var(--border-b);
-    border-radius:1rem;
-    background:var(--blue-pale);
-    transition:background .2s, border-color .2s, transform .2s;
-  }
-  .pillar:hover { background:var(--yellow-light); border-color:var(--yellow-dark); transform:translateY(-3px); }
-  .pillar-icon { font-size:1.6rem; margin-bottom:.5rem; }
-  .pillar h4 { font-size:.88rem; font-weight:700; color:var(--blue); }
-  .pillar p { font-size:.75rem; color:var(--muted); margin-top:.3rem; }
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 200;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 5vw;
+      height: 82px;
+      background: var(--blue);
+      border-bottom: 2px solid var(--yellow);
+      box-shadow: 0 4px 30px rgba(0,20,60,.25);
+    }
 
-  /* ── SERVICES ── */
-  .services {
-    padding:8rem 5vw;
-    background:var(--blue);
-    position:relative; overflow:hidden;
-  }
-  .services::before {
-    content:'';
-    position:absolute; inset:0;
-    background-image:radial-gradient(rgba(255,210,0,.07) 1.5px, transparent 1.5px);
-    background-size:30px 30px;
-    pointer-events:none;
-  }
-  .services-header {
-    display:flex; justify-content:space-between; align-items:flex-end;
-    margin-bottom:4rem;
-  }
-  .services-header .section-label { color:rgba(255,210,0,.7); }
-  .services-header .section-title { color:var(--white); }
-  .services-header .section-title em { color:var(--yellow); }
-  .services-grid {
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:1.5rem;
-  }
-  .service-card {
-    background:rgba(255,255,255,.06);
-    border:1.5px solid rgba(255,210,0,.2);
-    border-radius:1.5rem;
-    padding:2.2rem;
-    position:relative; overflow:hidden;
-    transition:transform .3s, border-color .3s, background .3s;
-    cursor:default;
-  }
-  .service-card:hover { transform:translateY(-6px); border-color:var(--yellow); background:rgba(255,210,0,.08); }
-  .service-card.featured {
-    border-color:var(--yellow);
-    background:rgba(255,210,0,.1);
-    grid-row:span 2;
-    display:flex; flex-direction:column;
-  }
-  .service-card.featured .service-desc { flex:1; }
-  .svc-tag {
-    display:inline-block;
-    font-size:.63rem; letter-spacing:.12em; text-transform:uppercase;
-    color:var(--blue); background:var(--yellow);
-    padding:.25rem .75rem; border-radius:2rem;
-    margin-bottom:1.2rem; font-weight:700;
-  }
-  .svc-icon { font-size:2.4rem; margin-bottom:1rem; }
-  .svc-title { font-family:'Playfair Display',serif; font-size:1.3rem; margin-bottom:.7rem; color:var(--white); }
-  .service-desc { color:rgba(255,255,255,.6); font-size:.88rem; line-height:1.7; }
-  .svc-arrow {
-    display:inline-flex; align-items:center; gap:.4rem;
-    margin-top:1.5rem; color:var(--yellow);
-    font-size:.85rem; font-weight:600; text-decoration:none;
-    transition:gap .2s;
-  }
-  .svc-arrow:hover { gap:.8rem; }
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      min-width: 0;
+    }
 
-  /* ── WHY US ── */
-  .why {
-    padding:8rem 5vw;
-    display:grid; grid-template-columns:1fr 1.4fr; gap:5rem; align-items:center;
-    background:var(--off-white);
-  }
-  .why-reasons { display:flex; flex-direction:column; gap:1.2rem; margin-top:2rem; }
-  .reason {
-    display:flex; gap:1.2rem; align-items:flex-start;
-    padding:1.2rem 1.4rem;
-    border-radius:1rem;
-    border:2px solid transparent;
-    transition:background .2s, border-color .2s;
-  }
-  .reason:hover { background:var(--blue-pale); border-color:var(--border-b); }
-  .reason-num {
-    font-family:'Bebas Neue',sans-serif;
-    font-size:2.2rem; color:rgba(0,63,138,.2);
-    line-height:1; min-width:2.5rem;
-    transition:color .2s;
-  }
-  .reason:hover .reason-num { color:var(--blue); }
-  .reason h4 { font-size:.95rem; font-weight:700; color:var(--dark); margin-bottom:.3rem; }
-  .reason p { font-size:.84rem; color:var(--muted); line-height:1.6; }
-  .why-visual { display:grid; grid-template-columns:1fr 1fr; gap:1rem; }
-  .metric-card {
-    background:var(--white);
-    border:2px solid var(--border-b);
-    border-radius:1.2rem;
-    padding:2rem 1.5rem;
-    text-align:center;
-    transition:transform .3s, border-color .3s, box-shadow .3s;
-    box-shadow:0 4px 16px rgba(0,63,138,.06);
-  }
-  .metric-card:hover { transform:scale(1.04); border-color:var(--yellow-dark); box-shadow:0 12px 30px rgba(0,63,138,.12); }
-  .metric-card:first-child {
-    grid-column:span 2;
-    background:var(--blue);
-    border-color:var(--yellow);
-  }
-  .metric-card:first-child .metric-big { color:var(--yellow); }
-  .metric-card:first-child .metric-label { color:rgba(255,255,255,.6); }
-  .metric-big {
-    font-family:'Bebas Neue',sans-serif;
-    font-size:3.5rem; line-height:1; color:var(--blue);
-  }
-  .metric-label { font-size:.74rem; color:var(--muted); letter-spacing:.08em; text-transform:uppercase; margin-top:.4rem; }
+    .brand-logo {
+      width: 105px;
+      height: 50px;
+      object-fit: contain;
+      object-position: center;
+      background: var(--yellow);
+      border-radius: 12px;
+      padding: 4px 8px;
+      box-shadow: 0 4px 16px rgba(255,210,0,.28);
+      flex-shrink: 0;
+      display: block;
+    }
 
-  /* ── CTA BAND ── */
-  .cta-band {
-    margin:0 5vw 8rem;
-    background:var(--yellow);
-    border-radius:2rem;
-    padding:4rem;
-    display:flex; align-items:center; justify-content:space-between;
-    gap:2rem; flex-wrap:wrap;
-    position:relative; overflow:hidden;
-    box-shadow:0 20px 50px rgba(255,210,0,.3);
-    z-index:1;
-  }
-  .cta-band::before {
-    content:'🔥';
-    position:absolute; right:3rem; top:50%; transform:translateY(-50%);
-    font-size:8rem; opacity:.12; pointer-events:none;
-  }
-  .cta-band h2 { font-family:'Playfair Display',serif; font-size:clamp(1.4rem,3vw,2.2rem); color:var(--blue); max-width:500px; }
-  .cta-band p { color:rgba(0,63,138,.65); margin-top:.5rem; font-size:.95rem; }
-  .btn-blue {
-    padding:.9rem 2rem;
-    background:var(--blue);
-    border:none; border-radius:3rem;
-    color:var(--yellow); font-weight:800; font-size:.95rem;
-    cursor:pointer; text-decoration:none;
-    transition:transform .2s, box-shadow .2s;
-    display:inline-flex; align-items:center; gap:.5rem;
-    flex-shrink:0;
-  }
-  .btn-blue:hover { transform:translateY(-3px); box-shadow:0 12px 28px rgba(0,63,138,.35); }
+    .brand-text span:first-child {
+      display: block;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.55rem;
+      letter-spacing: .06em;
+      color: var(--yellow);
+      line-height: 1;
+    }
 
-  /* ── CONTACT ── */
-  .contact {
-    padding:8rem 5vw;
-    display:grid; grid-template-columns:1fr 1fr; gap:5rem;
-    background:var(--off-white);
-  }
-  .contact-info p { color:var(--muted); margin-top:1rem; line-height:1.8; max-width:400px; }
-  .contact-items { margin-top:2.5rem; display:flex; flex-direction:column; gap:1rem; }
-  .contact-item {
-    display:flex; align-items:center; gap:1rem;
-    padding:1.1rem 1.4rem;
-    background:var(--white);
-    border:2px solid var(--border-b);
-    border-radius:1rem;
-    transition:border-color .2s, background .2s, transform .2s;
-    text-decoration:none; color:inherit;
-  }
-  .contact-item:hover { border-color:var(--yellow-dark); background:var(--yellow-light); transform:translateX(4px); }
-  .ci-icon {
-    width:44px; height:44px; border-radius:50%;
-    background:var(--blue);
-    display:flex; align-items:center; justify-content:center;
-    font-size:1rem; flex-shrink:0;
-  }
-  .ci-label { font-size:.7rem; color:var(--muted); letter-spacing:.07em; text-transform:uppercase; font-weight:600; }
-  .ci-value { font-size:.92rem; font-weight:600; color:var(--dark); margin-top:.1rem; }
+    .brand-text span:last-child {
+      display: block;
+      margin-top: 4px;
+      font-size: .68rem;
+      color: rgba(255,255,255,.7);
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      line-height: 1.2;
+    }
 
-  /* ── MAP SECTION ── */
-  .maps-section {
-    padding:0 5vw 6rem;
-    background:var(--off-white);
-    display:grid; grid-template-columns:1fr 1fr; gap:2rem;
-  }
-  .map-card {
-    border-radius:1.5rem; overflow:hidden;
-    border:2px solid var(--border-b);
-    box-shadow:0 8px 30px rgba(0,63,138,.1);
-  }
-  .map-card-header {
-    padding:1.2rem 1.5rem;
-    background:var(--blue);
-    display:flex; align-items:center; gap:.7rem;
-  }
-  .map-card-header span { font-size:1.2rem; }
-  .map-card-header h4 { font-weight:700; color:var(--white); font-size:.95rem; }
-  .map-card-header p { font-size:.75rem; color:rgba(255,255,255,.6); margin-top:.1rem; }
-  .map-card iframe { display:block; width:100%; border:none; }
-  .map-card-footer {
-    padding:1rem 1.5rem;
-    background:var(--white);
-    display:flex; justify-content:space-between; align-items:center;
-  }
-  .map-card-footer p { font-size:.78rem; color:var(--muted); }
-  .map-dir-btn {
-    padding:.5rem 1.2rem;
-    background:var(--yellow);
-    border:none; border-radius:2rem;
-    color:var(--blue); font-weight:700; font-size:.78rem;
-    cursor:pointer; text-decoration:none;
-    transition:transform .2s;
-  }
-  .map-dir-btn:hover { transform:translateY(-1px); }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 2.2rem;
+      list-style: none;
+    }
 
-  /* ── CONTACT FORM ── */
-  .contact-form {
-    background:var(--white);
-    border:2px solid var(--border-b);
-    border-radius:1.5rem;
-    padding:2.5rem;
-    box-shadow:0 8px 30px rgba(0,63,138,.07);
-  }
-  .contact-form h3 { font-family:'Playfair Display',serif; font-size:1.6rem; color:var(--dark); margin-bottom:1.8rem; }
-  .form-row { display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin-bottom:1rem; }
-  .form-group { display:flex; flex-direction:column; gap:.4rem; margin-bottom:1rem; }
-  .form-group label { font-size:.72rem; color:var(--muted); letter-spacing:.07em; text-transform:uppercase; font-weight:700; }
-  .form-group input,
-  .form-group textarea,
-  .form-group select {
-    background:var(--blue-pale);
-    border:2px solid var(--border-b);
-    border-radius:.75rem;
-    padding:.85rem 1rem;
-    color:var(--dark); font-family:'Plus Jakarta Sans',sans-serif;
-    font-size:.92rem; outline:none;
-    transition:border-color .2s, background .2s;
-    resize:none;
-  }
-  .form-group input:focus,
-  .form-group textarea:focus,
-  .form-group select:focus { border-color:var(--blue); background:var(--white); }
-  .form-group select option { background:var(--white); }
-  .form-submit {
-    width:100%; padding:1rem;
-    background:var(--blue);
-    border:none; border-radius:.75rem;
-    color:var(--yellow); font-weight:800; font-size:1rem;
-    cursor:pointer; font-family:'Plus Jakarta Sans',sans-serif;
-    transition:transform .2s, box-shadow .2s;
-  }
-  .form-submit:hover { transform:translateY(-2px); box-shadow:0 10px 28px rgba(0,63,138,.35); }
+    .nav-links a {
+      text-decoration: none;
+      color: rgba(255,255,255,.78);
+      font-size: .88rem;
+      font-weight: 600;
+      letter-spacing: .03em;
+      transition: color .2s;
+    }
 
-  /* ── FOOTER ── */
-  footer {
-    background:var(--blue);
-    border-top:3px solid var(--yellow);
-    padding:2.5rem 5vw;
-    display:flex; align-items:center; justify-content:space-between;
-    flex-wrap:wrap; gap:1rem;
-  }
-  footer p { color:rgba(255,255,255,.5); font-size:.82rem; }
-  .footer-links { display:flex; gap:1.5rem; }
-  .footer-links a { color:rgba(255,255,255,.5); text-decoration:none; font-size:.82rem; transition:color .2s; }
-  .footer-links a:hover { color:var(--yellow); }
-  .bp-logo { display:flex; align-items:center; gap:.6rem; }
-  .bp-dot {
-    width:32px; height:32px; border-radius:50%;
-    background:var(--yellow);
-    display:flex; align-items:center; justify-content:center;
-    font-size:.6rem; font-weight:800; color:var(--blue);
-  }
-  .bp-logo span { font-size:.78rem; color:rgba(255,255,255,.55); }
+    .nav-links a:hover {
+      color: var(--yellow);
+    }
 
-  /* ── ANIMATIONS ── */
-  @keyframes fadeUp {
-    from{opacity:0;transform:translateY(28px);}
-    to{opacity:1;transform:translateY(0);}
-  }
-  @keyframes fadeLeft {
-    from{opacity:0;transform:translateX(28px);}
-    to{opacity:1;transform:translateX(0);}
-  }
-  .reveal { opacity:0; transform:translateY(30px); transition:opacity .7s ease, transform .7s ease; }
-  .reveal.visible { opacity:1; transform:translateY(0); }
+    .nav-cta {
+      padding: .7rem 1.7rem;
+      background: var(--yellow);
+      border: none;
+      border-radius: 999px;
+      color: var(--blue);
+      font-weight: 800;
+      font-size: .88rem;
+      letter-spacing: .02em;
+      cursor: pointer;
+      text-decoration: none;
+      transition: transform .2s, box-shadow .2s;
+      white-space: nowrap;
+    }
 
-  /* ── RESPONSIVE ── */
-  @media(max-width:900px){
-    .about, .why, .contact { grid-template-columns:1fr; gap:3rem; }
-    .services-grid { grid-template-columns:1fr; }
-    .service-card.featured { grid-row:auto; }
-    .services-header { flex-direction:column; align-items:flex-start; gap:1rem; }
-    .hero-stats { display:none; }
-    .about-badge-float { right:0; bottom:-1rem; }
-    .why-visual { grid-template-columns:1fr 1fr; }
-    .form-row { grid-template-columns:1fr; }
-    .nav-links { display:none; }
-    .cta-band { text-align:center; justify-content:center; }
-    .maps-section { grid-template-columns:1fr; }
-  }
-</style>
+    .nav-cta:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(255,210,0,.4);
+    }
+
+    .hero {
+      min-height: 100vh;
+      padding: 0 5vw;
+      padding-top: 82px;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      background:
+        linear-gradient(90deg, rgba(0,36,102,0.88) 0%, rgba(0,45,120,0.72) 42%, rgba(0,26,70,0.48) 100%),
+        url("assets/mangalam-office.jpg") center center / cover no-repeat;
+    }
+
+    .hero-dots {
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(rgba(255,210,0,.14) 1.4px, transparent 1.4px);
+      background-size: 32px 32px;
+      pointer-events: none;
+    }
+
+    .hero-glow {
+      position: absolute;
+      top: -5%;
+      right: -5%;
+      width: 550px;
+      height: 550px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(26,127,212,.18) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-arc {
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      right: 0;
+      height: 85px;
+      background: var(--off-white);
+      clip-path: ellipse(55% 100% at 50% 100%);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 700px;
+      background: rgba(0, 22, 62, 0.34);
+      border: 1px solid rgba(255,255,255,.14);
+      border-radius: 1.6rem;
+      padding: 2.2rem;
+      backdrop-filter: blur(6px);
+      box-shadow: 0 20px 45px rgba(0,20,60,.18);
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      padding: .42rem 1rem;
+      background: rgba(255,210,0,.15);
+      border: 1px solid rgba(255,210,0,.45);
+      border-radius: 999px;
+      font-size: .72rem;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--yellow);
+      margin-bottom: 1.8rem;
+      animation: fadeUp .8s ease both;
+    }
+
+    .hero-badge span {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--yellow);
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%,100% { opacity: 1; }
+      50% { opacity: .35; }
+    }
+
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(3rem, 8vw, 6.2rem);
+      font-weight: 900;
+      line-height: .95;
+      color: var(--white);
+      animation: fadeUp .9s .1s ease both;
+    }
+
+    .hero h1 em {
+      font-style: italic;
+      color: var(--yellow);
+    }
+
+    .hero-sub {
+      margin-top: 1.5rem;
+      font-size: 1.05rem;
+      color: rgba(255,255,255,.82);
+      font-weight: 400;
+      line-height: 1.8;
+      max-width: 520px;
+      animation: fadeUp .9s .2s ease both;
+    }
+
+    .hero-actions {
+      margin-top: 2.2rem;
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      animation: fadeUp .9s .3s ease both;
+    }
+
+    .btn-primary {
+      padding: .95rem 2rem;
+      background: var(--yellow);
+      border: none;
+      border-radius: 999px;
+      color: var(--blue);
+      font-weight: 800;
+      font-size: .95rem;
+      cursor: pointer;
+      text-decoration: none;
+      transition: transform .2s, box-shadow .2s;
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 28px rgba(255,210,0,.45);
+    }
+
+    .btn-ghost {
+      padding: .95rem 2rem;
+      border: 1.5px solid rgba(255,255,255,.35);
+      border-radius: 999px;
+      color: var(--white);
+      font-weight: 600;
+      font-size: .95rem;
+      cursor: pointer;
+      text-decoration: none;
+      transition: border-color .2s, background .2s, color .2s;
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      background: transparent;
+    }
+
+    .btn-ghost:hover {
+      border-color: var(--yellow);
+      background: rgba(255,210,0,.1);
+      color: var(--yellow);
+    }
+
+    .hero-stats {
+      position: absolute;
+      right: 5vw;
+      bottom: 16vh;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      animation: fadeLeft .9s .4s ease both;
+    }
+
+    .stat {
+      text-align: right;
+      border-right: 3px solid var(--yellow);
+      padding-right: 1rem;
+      background: rgba(0, 23, 66, 0.26);
+      border-radius: .8rem 0 0 .8rem;
+      padding-top: .5rem;
+      padding-bottom: .5rem;
+      padding-left: 1.2rem;
+      backdrop-filter: blur(4px);
+    }
+
+    .stat-num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2.6rem;
+      line-height: 1;
+      color: var(--white);
+    }
+
+    .stat-label {
+      font-size: .7rem;
+      color: rgba(255,255,255,.68);
+      letter-spacing: .1em;
+      text-transform: uppercase;
+    }
+
+    .marquee-wrap {
+      overflow: hidden;
+      background: var(--yellow);
+      padding: .72rem 0;
+      position: relative;
+      z-index: 1;
+    }
+
+    .marquee-track {
+      display: flex;
+      width: max-content;
+      animation: marquee 22s linear infinite;
+    }
+
+    .marquee-track span {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.05rem;
+      letter-spacing: .1em;
+      color: var(--blue);
+      padding: 0 2.5rem;
+    }
+
+    .marquee-track span::before {
+      content: '✦ ';
+    }
+
+    @keyframes marquee {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+
+    section {
+      position: relative;
+      z-index: 1;
+    }
+
+    .section-label {
+      font-size: .72rem;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--blue-light);
+      margin-bottom: .8rem;
+      font-weight: 700;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.9rem, 3.5vw, 3rem);
+      font-weight: 900;
+      line-height: 1.1;
+      color: var(--dark);
+    }
+
+    .section-title em {
+      font-style: italic;
+      color: var(--blue-mid);
+    }
+
+    .about {
+      padding: 8rem 5vw;
+      display: grid;
+      grid-template-columns: 1.08fr 1fr;
+      gap: 4rem;
+      align-items: center;
+      background: var(--off-white);
+    }
+
+    .about-visual {
+      position: relative;
+    }
+
+    .about-img-frame {
+      aspect-ratio: 5 / 4;
+      border-radius: 1.5rem;
+      background: linear-gradient(145deg, var(--blue) 0%, var(--blue-mid) 50%, var(--blue-light) 100%);
+      border: 3px solid var(--yellow);
+      overflow: hidden;
+      position: relative;
+      box-shadow: 0 24px 60px rgba(0,63,138,.18);
+    }
+
+    .about-img-inner {
+      width: 100%;
+      height: 100%;
+      position: relative;
+    }
+
+    .about-img-inner img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center center;
+      display: block;
+    }
+
+    .about-img-inner::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(0,63,138,.03), rgba(0,26,58,.18));
+      pointer-events: none;
+    }
+
+    .about-badge-float {
+      position: absolute;
+      bottom: -1.2rem;
+      right: -1rem;
+      background: var(--yellow);
+      border-radius: 1rem;
+      padding: 1rem 1.6rem;
+      color: var(--blue);
+      font-weight: 800;
+      box-shadow: 0 16px 40px rgba(255,210,0,.35);
+      border: 3px solid var(--blue);
+    }
+
+    .about-badge-float .big {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2.2rem;
+      line-height: 1;
+    }
+
+    .about-badge-float .small {
+      font-size: .68rem;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+    }
+
+    .about-text p {
+      color: var(--muted);
+      font-size: 1rem;
+      line-height: 1.85;
+      margin-top: 1.2rem;
+    }
+
+    .about-pillars {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+
+    .pillar {
+      padding: 1.3rem;
+      border: 2px solid var(--border-b);
+      border-radius: 1rem;
+      background: var(--blue-pale);
+      transition: background .2s, border-color .2s, transform .2s;
+    }
+
+    .pillar:hover {
+      background: var(--yellow-light);
+      border-color: var(--yellow-dark);
+      transform: translateY(-3px);
+    }
+
+    .pillar-icon {
+      font-size: 1.5rem;
+      margin-bottom: .5rem;
+    }
+
+    .pillar h4 {
+      font-size: .9rem;
+      font-weight: 700;
+      color: var(--blue);
+      margin-bottom: .25rem;
+    }
+
+    .pillar p {
+      font-size: .78rem;
+      color: var(--muted);
+      margin-top: 0;
+      line-height: 1.5;
+    }
+
+    .services {
+      padding: 8rem 5vw;
+      background: var(--blue);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .services::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(rgba(255,210,0,.07) 1.5px, transparent 1.5px);
+      background-size: 30px 30px;
+      pointer-events: none;
+    }
+
+    .services-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 4rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .services-header .section-label {
+      color: rgba(255,210,0,.78);
+    }
+
+    .services-header .section-title {
+      color: var(--white);
+    }
+
+    .services-header .section-title em {
+      color: var(--yellow);
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: 1.5rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .service-card {
+      background: rgba(255,255,255,.06);
+      border: 1.5px solid rgba(255,210,0,.2);
+      border-radius: 1.5rem;
+      padding: 2.2rem;
+      position: relative;
+      overflow: hidden;
+      transition: transform .3s, border-color .3s, background .3s;
+      cursor: default;
+    }
+
+    .service-card:hover {
+      transform: translateY(-6px);
+      border-color: var(--yellow);
+      background: rgba(255,210,0,.08);
+    }
+
+    .service-card.featured {
+      border-color: var(--yellow);
+      background: rgba(255,210,0,.1);
+      grid-row: span 2;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .service-card.featured .service-desc {
+      flex: 1;
+    }
+
+    .svc-tag {
+      display: inline-block;
+      font-size: .63rem;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--blue);
+      background: var(--yellow);
+      padding: .25rem .75rem;
+      border-radius: 999px;
+      margin-bottom: 1.2rem;
+      font-weight: 700;
+    }
+
+    .svc-icon {
+      font-size: 2.3rem;
+      margin-bottom: 1rem;
+    }
+
+    .svc-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.25rem;
+      margin-bottom: .7rem;
+      color: var(--white);
+    }
+
+    .service-desc {
+      color: rgba(255,255,255,.67);
+      font-size: .88rem;
+      line-height: 1.75;
+    }
+
+    .svc-arrow {
+      display: inline-flex;
+      align-items: center;
+      gap: .4rem;
+      margin-top: 1.5rem;
+      color: var(--yellow);
+      font-size: .85rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: gap .2s;
+    }
+
+    .svc-arrow:hover {
+      gap: .8rem;
+    }
+
+    .why {
+      padding: 8rem 5vw;
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 4rem;
+      align-items: center;
+      background: var(--off-white);
+    }
+
+    .why-reasons {
+      display: flex;
+      flex-direction: column;
+      gap: 1.1rem;
+      margin-top: 2rem;
+    }
+
+    .reason {
+      display: flex;
+      gap: 1.2rem;
+      align-items: flex-start;
+      padding: 1.2rem 1.4rem;
+      border-radius: 1rem;
+      border: 2px solid transparent;
+      transition: background .2s, border-color .2s;
+    }
+
+    .reason:hover {
+      background: var(--blue-pale);
+      border-color: var(--border-b);
+    }
+
+    .reason-num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2.2rem;
+      color: rgba(0,63,138,.2);
+      line-height: 1;
+      min-width: 2.5rem;
+      transition: color .2s;
+    }
+
+    .reason:hover .reason-num {
+      color: var(--blue);
+    }
+
+    .reason h4 {
+      font-size: .95rem;
+      font-weight: 700;
+      color: var(--dark);
+      margin-bottom: .3rem;
+    }
+
+    .reason p {
+      font-size: .84rem;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+
+    .why-visual {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    .metric-card {
+      background: var(--white);
+      border: 2px solid var(--border-b);
+      border-radius: 1.2rem;
+      padding: 2rem 1.5rem;
+      text-align: center;
+      transition: transform .3s, border-color .3s, box-shadow .3s;
+      box-shadow: 0 4px 16px rgba(0,63,138,.06);
+    }
+
+    .metric-card:hover {
+      transform: scale(1.04);
+      border-color: var(--yellow-dark);
+      box-shadow: 0 12px 30px rgba(0,63,138,.12);
+    }
+
+    .metric-card:first-child {
+      grid-column: span 2;
+      background: var(--blue);
+      border-color: var(--yellow);
+    }
+
+    .metric-card:first-child .metric-big {
+      color: var(--yellow);
+    }
+
+    .metric-card:first-child .metric-label {
+      color: rgba(255,255,255,.6);
+    }
+
+    .metric-big {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 3.4rem;
+      line-height: 1;
+      color: var(--blue);
+    }
+
+    .metric-label {
+      font-size: .74rem;
+      color: var(--muted);
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      margin-top: .4rem;
+    }
+
+    .cta-band {
+      margin: 0 5vw 8rem;
+      background: var(--yellow);
+      border-radius: 2rem;
+      padding: 4rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+      flex-wrap: wrap;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 20px 50px rgba(255,210,0,.28);
+      z-index: 1;
+    }
+
+    .cta-band::before {
+      content: '';
+      position: absolute;
+      right: 2rem;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 150px;
+      height: 80px;
+      background: url("assets/bharatgas-logo.png") center/contain no-repeat;
+      opacity: .12;
+      pointer-events: none;
+    }
+
+    .cta-band h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.4rem,3vw,2.2rem);
+      color: var(--blue);
+      max-width: 500px;
+    }
+
+    .cta-band p {
+      color: rgba(0,63,138,.7);
+      margin-top: .5rem;
+      font-size: .95rem;
+    }
+
+    .btn-blue {
+      padding: .95rem 2rem;
+      background: var(--blue);
+      border: none;
+      border-radius: 999px;
+      color: var(--yellow);
+      font-weight: 800;
+      font-size: .95rem;
+      cursor: pointer;
+      text-decoration: none;
+      transition: transform .2s, box-shadow .2s;
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      flex-shrink: 0;
+    }
+
+    .btn-blue:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 28px rgba(0,63,138,.35);
+    }
+
+    .contact {
+      padding: 8rem 5vw;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      background: var(--off-white);
+    }
+
+    .contact-info p {
+      color: var(--muted);
+      margin-top: 1rem;
+      line-height: 1.8;
+      max-width: 420px;
+    }
+
+    .contact-items {
+      margin-top: 2.3rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 1.1rem 1.4rem;
+      background: var(--white);
+      border: 2px solid var(--border-b);
+      border-radius: 1rem;
+      transition: border-color .2s, background .2s, transform .2s;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .contact-item:hover {
+      border-color: var(--yellow-dark);
+      background: var(--yellow-light);
+      transform: translateX(4px);
+    }
+
+    .ci-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: var(--blue);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
+
+    .ci-label {
+      font-size: .7rem;
+      color: var(--muted);
+      letter-spacing: .07em;
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+
+    .ci-value {
+      font-size: .92rem;
+      font-weight: 600;
+      color: var(--dark);
+      margin-top: .1rem;
+    }
+
+    .contact-form {
+      background: var(--white);
+      border: 2px solid var(--border-b);
+      border-radius: 1.5rem;
+      padding: 2.5rem;
+      box-shadow: 0 8px 30px rgba(0,63,138,.07);
+    }
+
+    .contact-form h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.6rem;
+      color: var(--dark);
+      margin-bottom: 1.8rem;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: .4rem;
+      margin-bottom: 1rem;
+    }
+
+    .form-group label {
+      font-size: .72rem;
+      color: var(--muted);
+      letter-spacing: .07em;
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      background: var(--blue-pale);
+      border: 2px solid var(--border-b);
+      border-radius: .75rem;
+      padding: .85rem 1rem;
+      color: var(--dark);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: .92rem;
+      outline: none;
+      transition: border-color .2s, background .2s;
+      resize: none;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus {
+      border-color: var(--blue);
+      background: var(--white);
+    }
+
+    .form-submit {
+      width: 100%;
+      padding: 1rem;
+      background: var(--blue);
+      border: none;
+      border-radius: .75rem;
+      color: var(--yellow);
+      font-weight: 800;
+      font-size: 1rem;
+      cursor: pointer;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      transition: transform .2s, box-shadow .2s;
+    }
+
+    .form-submit:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 28px rgba(0,63,138,.35);
+    }
+
+    .maps-section {
+      padding: 0 5vw 6rem;
+      background: var(--off-white);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+    }
+
+    .map-card {
+      border-radius: 1.5rem;
+      overflow: hidden;
+      border: 2px solid var(--border-b);
+      box-shadow: 0 8px 30px rgba(0,63,138,.1);
+    }
+
+    .map-card-header {
+      padding: 1.2rem 1.5rem;
+      background: var(--blue);
+      display: flex;
+      align-items: center;
+      gap: .7rem;
+    }
+
+    .map-card-header span {
+      font-size: 1.2rem;
+    }
+
+    .map-card-header h4 {
+      font-weight: 700;
+      color: var(--white);
+      font-size: .95rem;
+    }
+
+    .map-card-header p {
+      font-size: .75rem;
+      color: rgba(255,255,255,.6);
+      margin-top: .1rem;
+    }
+
+    .map-card iframe {
+      display: block;
+      width: 100%;
+      border: none;
+    }
+
+    .map-card-footer {
+      padding: 1rem 1.5rem;
+      background: var(--white);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: .8rem;
+      flex-wrap: wrap;
+    }
+
+    .map-card-footer p {
+      font-size: .78rem;
+      color: var(--muted);
+    }
+
+    .map-dir-btn {
+      padding: .55rem 1.2rem;
+      background: var(--yellow);
+      border: none;
+      border-radius: 999px;
+      color: var(--blue);
+      font-weight: 700;
+      font-size: .78rem;
+      cursor: pointer;
+      text-decoration: none;
+      transition: transform .2s;
+    }
+
+    .map-dir-btn:hover {
+      transform: translateY(-1px);
+    }
+
+    footer {
+      background: var(--blue);
+      border-top: 3px solid var(--yellow);
+      padding: 2.5rem 5vw;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    footer p {
+      color: rgba(255,255,255,.55);
+      font-size: .82rem;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    .footer-links a {
+      color: rgba(255,255,255,.6);
+      text-decoration: none;
+      font-size: .82rem;
+      transition: color .2s;
+    }
+
+    .footer-links a:hover {
+      color: var(--yellow);
+    }
+
+    .bp-logo {
+      display: flex;
+      align-items: center;
+      gap: .7rem;
+    }
+
+    .bp-logo img {
+      width: 70px;
+      height: 34px;
+      object-fit: contain;
+      background: var(--yellow);
+      padding: 3px 7px;
+      border-radius: 8px;
+      display: block;
+    }
+
+    .bp-logo span {
+      font-size: .78rem;
+      color: rgba(255,255,255,.6);
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(28px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeLeft {
+      from {
+        opacity: 0;
+        transform: translateX(28px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity .7s ease, transform .7s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 1100px) {
+      .hero-stats {
+        display: none;
+      }
+
+      .services-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .service-card.featured {
+        grid-row: auto;
+      }
+    }
+
+    @media (max-width: 900px) {
+      .about,
+      .why,
+      .contact,
+      .maps-section {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+      }
+
+      .services-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .services-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+      }
+
+      .about-badge-float {
+        right: 0;
+        bottom: -1rem;
+      }
+
+      .form-row {
+        grid-template-columns: 1fr;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .cta-band {
+        text-align: center;
+        justify-content: center;
+      }
+
+      .hero {
+        background:
+          linear-gradient(180deg, rgba(0,36,102,0.85) 0%, rgba(0,45,120,0.72) 55%, rgba(0,26,70,0.52) 100%),
+          url("assets/mangalam-office.jpg") center center / cover no-repeat;
+      }
+
+      .hero-content {
+        padding: 1.8rem;
+      }
+    }
+
+    @media (max-width: 600px) {
+      nav {
+        padding: 0 4vw;
+        height: 78px;
+      }
+
+      .brand-logo {
+        width: 88px;
+        height: 42px;
+      }
+
+      .brand-text span:first-child {
+        font-size: 1.2rem;
+      }
+
+      .brand-text span:last-child {
+        font-size: .55rem;
+      }
+
+      .nav-cta {
+        display: none;
+      }
+
+      .about-pillars,
+      .why-visual {
+        grid-template-columns: 1fr;
+      }
+
+      .metric-card:first-child {
+        grid-column: auto;
+      }
+
+      .cta-band {
+        padding: 2.5rem 1.5rem;
+      }
+
+      .hero-content {
+        padding: 1.5rem;
+      }
+
+      .hero h1 {
+        font-size: 3rem;
+      }
+
+      .hero-sub {
+        font-size: .95rem;
+      }
+
+      .about-img-frame {
+        aspect-ratio: 4 / 3;
+      }
+    }
+  </style>
 </head>
+
 <body>
 
-<!-- NAV -->
-<nav>
-  <div class="nav-brand">
-    <div class="flame-icon">🔥</div>
-    <div class="brand-text">
-      <span>Mangalam Gas</span>
-      <span>Bharatgas Distributor · Eruvadi</span>
+  <nav>
+    <div class="nav-brand">
+      <img src="assets/bharatgas-logo.png" alt="Bharatgas Logo" class="brand-logo">
+      <div class="brand-text">
+        <span>Mangalam Gas</span>
+        <span>Bharatgas Distributor · Eruvadi</span>
+      </div>
     </div>
-  </div>
-  <ul class="nav-links">
-    <li><a href="#about">About</a></li>
-    <li><a href="#services">Services</a></li>
-    <li><a href="#why">Why Us</a></li>
-    <li><a href="#contact">Contact</a></li>
-  </ul>
-  <a href="#contact" class="nav-cta">Book a Cylinder</a>
-</nav>
 
-<!-- HERO -->
-<section class="hero">
-  <div class="hero-dots"></div>
-  <div class="hero-glow"></div>
-  <div class="hero-content">
-    <div class="hero-badge"><span></span> Authorised Bharatgas Distributor</div>
-    <h1>Fuel<br>Every<br><em>Home.</em></h1>
-    <p class="hero-sub">Mangalam Gas Agency, Eruvadi — delivering safe, reliable LPG to thousands of households with speed and care for over 27 years.</p>
-    <div class="hero-actions">
-      <a href="#contact" class="btn-primary">📦 Book Now</a>
-      <a href="#services" class="btn-ghost">Explore Services →</a>
-    </div>
-  </div>
-  <div class="hero-stats">
-    <div class="stat">
-      <div class="stat-num">10K+</div>
-      <div class="stat-label">Happy Customers</div>
-    </div>
-    <div class="stat">
-      <div class="stat-num">24H</div>
-      <div class="stat-label">Fast Delivery</div>
-    </div>
-    <div class="stat">
-      <div class="stat-num">27 Yrs</div>
-      <div class="stat-label">Trusted Service</div>
-    </div>
-  </div>
-  <div class="hero-arc"></div>
-</section>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#why">Why Us</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
 
-<!-- MARQUEE -->
-<div class="marquee-wrap">
-  <div class="marquee-track">
-    <span>Domestic LPG</span><span>Commercial Cylinders</span><span>Quick Delivery</span>
-    <span>Safety First</span><span>Bharatgas Authorised</span><span>Eruvadi</span>
-    <span>Industrial Gas</span><span>Home Appliances</span><span>Trusted Service</span>
-    <span>Domestic LPG</span><span>Commercial Cylinders</span><span>Quick Delivery</span>
-    <span>Safety First</span><span>Bharatgas Authorised</span><span>Eruvadi</span>
-    <span>Industrial Gas</span><span>Home Appliances</span><span>Trusted Service</span>
-  </div>
-</div>
+    <a href="#contact" class="nav-cta">Book a Cylinder</a>
+  </nav>
 
-<!-- ABOUT -->
-<section class="about" id="about">
-  <div class="about-visual reveal">
-    <div class="about-img-frame">
-      <div class="about-img-inner">
-        <div class="big-icon">🏪</div>
-        <div class="label">Mangalam Gas Agency</div>
-        <div class="sub">Eruvadi, Tamil Nadu</div>
-      </div>
-    </div>
-    <div class="about-badge-float">
-      <div class="big">27+</div>
-      <div class="small">Years of Trust</div>
-    </div>
-  </div>
-  <div class="about-text reveal">
-    <div class="section-label">Our Story</div>
-    <h2 class="section-title">Serving Eruvadi with <em>Pride & Purpose</em></h2>
-    <p>Mangalam Gas Agency is an authorised Bharatgas (Bharat Petroleum) distributor proudly serving the people of Eruvadi and surrounding regions. We have built our reputation on reliability, safety, and genuine customer care.</p>
-    <p>From household cooking gas to commercial and industrial solutions, we are the one-stop destination for all your LPG needs — backed by the trust of Bharat Petroleum.</p>
-    <div class="about-pillars">
-      <div class="pillar">
-        <div class="pillar-icon">🛡️</div>
-        <h4>ISI Certified</h4>
-        <p>All cylinders meet strict safety standards</p>
-      </div>
-      <div class="pillar">
-        <div class="pillar-icon">🚚</div>
-        <h4>Fast Delivery</h4>
-        <p>Prompt doorstep delivery, every time</p>
-      </div>
-      <div class="pillar">
-        <div class="pillar-icon">📞</div>
-        <h4>Easy Booking</h4>
-        <p>Book by phone, app, or walk-in</p>
-      </div>
-      <div class="pillar">
-        <div class="pillar-icon">🔧</div>
-        <h4>Appliances</h4>
-        <p>Stoves, regulators & accessories</p>
-      </div>
-    </div>
-  </div>
-</section>
+  <section class="hero">
+    <div class="hero-dots"></div>
+    <div class="hero-glow"></div>
 
-<!-- SERVICES -->
-<section class="services" id="services">
-  <div class="services-header reveal">
+    <div class="hero-content">
+      <div class="hero-badge">
+        <span></span> Authorised Bharatgas Distributor
+      </div>
+
+      <h1>Fuel<br>Every<br><em>Home.</em></h1>
+
+      <p class="hero-sub">
+        Mangalam Gas Agency, Eruvadi — delivering safe, reliable LPG to thousands of households with speed, care, and trusted service for over 27 years.
+      </p>
+
+      <div class="hero-actions">
+        <a href="#contact" class="btn-primary">📦 Book Now</a>
+        <a href="#services" class="btn-ghost">Explore Services →</a>
+      </div>
+    </div>
+
+    <div class="hero-stats">
+      <div class="stat">
+        <div class="stat-num">10K+</div>
+        <div class="stat-label">Happy Customers</div>
+      </div>
+
+      <div class="stat">
+        <div class="stat-num">24H</div>
+        <div class="stat-label">Fast Delivery</div>
+      </div>
+
+      <div class="stat">
+        <div class="stat-num">27 Yrs</div>
+        <div class="stat-label">Trusted Service</div>
+      </div>
+    </div>
+
+    <div class="hero-arc"></div>
+  </section>
+
+  <div class="marquee-wrap">
+    <div class="marquee-track">
+      <span>Domestic LPG</span>
+      <span>Commercial Cylinders</span>
+      <span>Quick Delivery</span>
+      <span>Safety First</span>
+      <span>Bharatgas Authorised</span>
+      <span>Eruvadi</span>
+      <span>Industrial Gas</span>
+      <span>Home Appliances</span>
+      <span>Trusted Service</span>
+
+      <span>Domestic LPG</span>
+      <span>Commercial Cylinders</span>
+      <span>Quick Delivery</span>
+      <span>Safety First</span>
+      <span>Bharatgas Authorised</span>
+      <span>Eruvadi</span>
+      <span>Industrial Gas</span>
+      <span>Home Appliances</span>
+      <span>Trusted Service</span>
+    </div>
+  </div>
+
+  <section class="about" id="about">
+    <div class="about-visual reveal">
+      <div class="about-img-frame">
+        <div class="about-img-inner">
+          <img src="assets/mangalam-office.jpg" alt="Mangalam Gas Agency Office">
+        </div>
+      </div>
+
+      <div class="about-badge-float">
+        <div class="big">27+</div>
+        <div class="small">Years of Trust</div>
+      </div>
+    </div>
+
+    <div class="about-text reveal">
+      <div class="section-label">Our Story</div>
+
+      <h2 class="section-title">
+        Serving Eruvadi with <em>Pride & Purpose</em>
+      </h2>
+
+      <p>
+        Mangalam Gas Agency is an authorised Bharatgas distributor proudly serving the people of Eruvadi and surrounding regions. We have built our reputation on reliability, safety, and genuine customer care.
+      </p>
+
+      <p>
+        From household cooking gas to commercial and industrial LPG solutions, we are the one-stop destination for all your LPG needs — backed by the trust of Bharat Petroleum.
+      </p>
+
+      <div class="about-pillars">
+        <div class="pillar">
+          <div class="pillar-icon">🛡️</div>
+          <h4>Safety First</h4>
+          <p>Every delivery follows safe handling practices.</p>
+        </div>
+
+        <div class="pillar">
+          <div class="pillar-icon">🚚</div>
+          <h4>Fast Delivery</h4>
+          <p>Prompt doorstep delivery for customers.</p>
+        </div>
+
+        <div class="pillar">
+          <div class="pillar-icon">📞</div>
+          <h4>Easy Booking</h4>
+          <p>Book by phone, app, or walk-in.</p>
+        </div>
+
+        <div class="pillar">
+          <div class="pillar-icon">🔧</div>
+          <h4>Appliances</h4>
+          <p>Gas stoves, regulators, hoses and accessories.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="services" id="services">
+    <div class="services-header reveal">
+      <div>
+        <div class="section-label">What We Offer</div>
+        <h2 class="section-title">Complete Gas <em>Solutions</em></h2>
+      </div>
+
+      <a href="#contact" class="btn-primary">Get in Touch →</a>
+    </div>
+
+    <div class="services-grid">
+      <div class="service-card featured reveal">
+        <div class="svc-tag">Most Popular</div>
+        <div class="svc-icon">🏠</div>
+        <div class="svc-title">Domestic LPG Cylinder</div>
+
+        <p class="service-desc">
+          Our flagship service — delivering 14.2 kg domestic LPG cylinders to households across Eruvadi and nearby villages. Quick refills, doorstep delivery, and hassle-free new connections under the Bharatgas network.
+        </p>
+
+        <a href="#contact" class="svc-arrow">Book Now →</a>
+      </div>
+
+      <div class="service-card reveal">
+        <div class="svc-icon">🍽️</div>
+        <div class="svc-title">Commercial Gas</div>
+
+        <p class="service-desc">
+          Larger cylinders for restaurants, hotels, canteens, and catering businesses. Reliable supply so your kitchen never stops.
+        </p>
+
+        <a href="#contact" class="svc-arrow">Enquire →</a>
+      </div>
+
+      <div class="service-card reveal">
+        <div class="svc-icon">🏭</div>
+        <div class="svc-title">Industrial LPG</div>
+
+        <p class="service-desc">
+          LPG solutions for industries, workshops, and manufacturing units requiring consistent gas supply.
+        </p>
+
+        <a href="#contact" class="svc-arrow">Enquire →</a>
+      </div>
+
+      <div class="service-card reveal">
+        <div class="svc-icon">🔌</div>
+        <div class="svc-title">New Connections</div>
+
+        <p class="service-desc">
+          Setting up a new home or business? We assist with Bharatgas new connection paperwork, KYC, and first-cylinder delivery.
+        </p>
+
+        <a href="#contact" class="svc-arrow">Get Started →</a>
+      </div>
+
+      <div class="service-card reveal">
+        <div class="svc-icon">🛒</div>
+        <div class="svc-title">Home Appliances</div>
+
+        <p class="service-desc">
+          Browse our selection of gas stoves, hoses, regulators, and accessories from trusted brands.
+        </p>
+
+        <a href="#contact" class="svc-arrow">Shop Now →</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="why" id="why">
+    <div class="why-text">
+      <div class="section-label reveal">Why Choose Us</div>
+
+      <h2 class="section-title reveal">
+        Your Safety Is Our <em>Priority</em>
+      </h2>
+
+      <div class="why-reasons">
+        <div class="reason reveal">
+          <div class="reason-num">01</div>
+          <div>
+            <h4>Authorised & Trusted</h4>
+            <p>Officially authorised Bharatgas distributor — customers are always in safe and legitimate hands.</p>
+          </div>
+        </div>
+
+        <div class="reason reveal">
+          <div class="reason-num">02</div>
+          <div>
+            <h4>27 Years of Experience</h4>
+            <p>Decades of experience in handling LPG distribution safely and responsibly.</p>
+          </div>
+        </div>
+
+        <div class="reason reveal">
+          <div class="reason-num">03</div>
+          <div>
+            <h4>Transparent Service</h4>
+            <p>Clear communication, reliable delivery support, and customer-friendly assistance.</p>
+          </div>
+        </div>
+
+        <div class="reason reveal">
+          <div class="reason-num">04</div>
+          <div>
+            <h4>Community Rooted</h4>
+            <p>Deeply connected with Eruvadi and committed to serving local families and businesses.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="why-visual">
+      <div class="metric-card reveal">
+        <div class="metric-big">10,000+</div>
+        <div class="metric-label">Active Customers</div>
+      </div>
+
+      <div class="metric-card reveal">
+        <div class="metric-big">27+</div>
+        <div class="metric-label">Years in Service</div>
+      </div>
+
+      <div class="metric-card reveal">
+        <div class="metric-big">24H</div>
+        <div class="metric-label">Delivery Turnaround</div>
+      </div>
+
+      <div class="metric-card reveal">
+        <div class="metric-big">100%</div>
+        <div class="metric-label">Customer Focus</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="cta-band reveal">
     <div>
-      <div class="section-label">What We Offer</div>
-      <h2 class="section-title">Complete Gas <em>Solutions</em></h2>
+      <h2>Ready to place your next order?</h2>
+      <p>Call us or fill the form — we will handle the rest.</p>
     </div>
-    <a href="#contact" class="btn-primary">Get in Touch →</a>
-  </div>
-  <div class="services-grid">
-    <div class="service-card featured reveal">
-      <div class="svc-tag">Most Popular</div>
-      <div class="svc-icon">🏠</div>
-      <div class="svc-title">Domestic LPG Cylinder</div>
-      <p class="service-desc">Our flagship service — delivering 14.2 kg domestic LPG cylinders to households across Eruvadi and nearby villages. Quick refills, doorstep delivery, and hassle-free new connections under the Bharatgas network. Subsidised and market-rate options available.</p>
-      <a href="#contact" class="svc-arrow">Book Now →</a>
-    </div>
-    <div class="service-card reveal">
-      <div class="svc-icon">🍽️</div>
-      <div class="svc-title">Commercial Gas</div>
-      <p class="service-desc">Larger cylinders for restaurants, hotels, canteens, and catering businesses. Reliable supply so your kitchen never stops.</p>
-      <a href="#contact" class="svc-arrow">Enquire →</a>
-    </div>
-    <div class="service-card reveal">
-      <div class="svc-icon">🏭</div>
-      <div class="svc-title">Industrial LPG</div>
-      <p class="service-desc">Bulk LPG solutions for small industries, workshops, and manufacturing units requiring consistent gas supply.</p>
-      <a href="#contact" class="svc-arrow">Enquire →</a>
-    </div>
-    <div class="service-card reveal">
-      <div class="svc-icon">🔌</div>
-      <div class="svc-title">New Connections</div>
-      <p class="service-desc">Setting up a new home or business? We assist with Bharatgas new connection paperwork, KYC, and first-cylinder delivery.</p>
-      <a href="#contact" class="svc-arrow">Get Started →</a>
-    </div>
-    <div class="service-card reveal">
-      <div class="svc-icon">🛒</div>
-      <div class="svc-title">Home Appliances</div>
-      <p class="service-desc">Browse our selection of ISI-certified gas stoves, hoses, regulators, and accessories from trusted brands.</p>
-      <a href="#contact" class="svc-arrow">Shop Now →</a>
-    </div>
-  </div>
-</section>
 
-<!-- WHY US -->
-<section class="why" id="why">
-  <div class="why-text">
-    <div class="section-label reveal">Why Choose Us</div>
-    <h2 class="section-title reveal">Your Safety Is Our <em>Priority</em></h2>
-    <div class="why-reasons">
-      <div class="reason reveal">
-        <div class="reason-num">01</div>
-        <div>
-          <h4>Authorised & Trusted</h4>
-          <p>Officially authorised by Bharat Petroleum Corporation Ltd (BPCL) — you're always in safe, legitimate hands.</p>
-        </div>
-      </div>
-      <div class="reason reveal">
-        <div class="reason-num">02</div>
-        <div>
-          <h4>27 Years of Experience</h4>
-          <p>Decades of experience handling LPG distribution safely and responsibly across Eruvadi and surrounding areas.</p>
-        </div>
-      </div>
-      <div class="reason reveal">
-        <div class="reason-num">03</div>
-        <div>
-          <h4>Transparent Pricing</h4>
-          <p>Government-regulated pricing with no hidden charges. Subsidised cylinders processed through Aadhaar-linked accounts.</p>
-        </div>
-      </div>
-      <div class="reason reveal">
-        <div class="reason-num">04</div>
-        <div>
-          <h4>Community Rooted</h4>
-          <p>Born and raised in Eruvadi, we are deeply committed to our community's wellbeing and convenience.</p>
-        </div>
-      </div>
-    </div>
+    <a href="tel:9445210793" class="btn-blue">📞 Call 94452 10793</a>
   </div>
-  <div class="why-visual">
-    <div class="metric-card reveal">
-      <div class="metric-big">10,000+</div>
-      <div class="metric-label">Active Customers</div>
-    </div>
-    <div class="metric-card reveal">
-      <div class="metric-big">27+</div>
-      <div class="metric-label">Years in Service</div>
-    </div>
-    <div class="metric-card reveal">
-      <div class="metric-big">24H</div>
-      <div class="metric-label">Delivery Turnaround</div>
-    </div>
-    <div class="metric-card reveal">
-      <div class="metric-big">100%</div>
-      <div class="metric-label">Safety Record</div>
-    </div>
-  </div>
-</section>
 
-<!-- CTA BAND -->
-<div class="cta-band reveal">
-  <div>
-    <h2>Ready to place your next order?</h2>
-    <p>Call us or fill the form — we'll handle the rest.</p>
-  </div>
-  <a href="tel:9445210793" class="btn-blue">📞 Call 94452 10793</a>
-</div>
+  <section class="contact" id="contact">
+    <div class="contact-info">
+      <div class="section-label reveal">Get In Touch</div>
 
-<!-- CONTACT -->
-<section class="contact" id="contact">
-  <div class="contact-info">
-    <div class="section-label reveal">Get In Touch</div>
-    <h2 class="section-title reveal">We're Here to <em>Help</em></h2>
-    <p class="reveal">Whether you want to book a cylinder, apply for a new connection, or simply ask a question — reach out and we'll respond promptly.</p>
-    <div class="contact-items">
-      <a class="contact-item reveal" href="https://www.google.com/maps/place/8%C2%B026'02.2%22N+77%C2%B036'22.8%22E/@8.4339444,77.6063183,1122m/data=!3m2!1e3!4b1!4m4!3m3!8m2!3d8.4339444!4d77.6063183?entry=ttu&g_ep=EgoyMDI2MDQyMC4wIKXMDSoASAFQAw%3D%3D" target="_blank">
-        <div class="ci-icon">📍</div>
-        <div>
-          <div class="ci-label">Office Address</div>
-          <div class="ci-value">Mangalam Gas Agency, Eruvadi, Tamil Nadu</div>
+      <h2 class="section-title reveal">
+        We're Here to <em>Help</em>
+      </h2>
+
+      <p class="reveal">
+        Whether you want to book a cylinder, apply for a new connection, or simply ask a question — reach out and we will respond promptly.
+      </p>
+
+      <div class="contact-items">
+        <a class="contact-item reveal" href="https://www.google.com/maps/place/8%C2%B026'02.2%22N+77%C2%B036'22.8%22E/@8.4339444,77.6063183,1122m/data=!3m2!1e3!4b1!4m4!3m3!8m2!3d8.4339444!4d77.6063183?entry=ttu" target="_blank">
+          <div class="ci-icon">📍</div>
+          <div>
+            <div class="ci-label">Office Address</div>
+            <div class="ci-value">Mangalam Gas Agency, Eruvadi, Tamil Nadu</div>
+          </div>
+        </a>
+
+        <a class="contact-item reveal" href="tel:9445210793">
+          <div class="ci-icon">📞</div>
+          <div>
+            <div class="ci-label">Phone</div>
+            <div class="ci-value">+91 94452 10793</div>
+          </div>
+        </a>
+
+        <a class="contact-item reveal" href="mailto:Mangalamgas_eruvadi@bharatgas.in">
+          <div class="ci-icon">✉️</div>
+          <div>
+            <div class="ci-label">Email</div>
+            <div class="ci-value">Mangalamgas_eruvadi@bharatgas.in</div>
+          </div>
+        </a>
+
+        <div class="contact-item reveal">
+          <div class="ci-icon">⏰</div>
+          <div>
+            <div class="ci-label">Working Hours</div>
+            <div class="ci-value">Mon – Sat: 9:00 AM – 6:00 PM</div>
+          </div>
         </div>
-      </a>
-      <a class="contact-item reveal" href="tel:9445210793">
-        <div class="ci-icon">📞</div>
-        <div>
-          <div class="ci-label">Phone</div>
-          <div class="ci-value">+91 94452 10793</div>
-        </div>
-      </a>
-      <a class="contact-item reveal" href="mailto:Mangalamgas_eruvadi@bharatgas.in">
-        <div class="ci-icon">✉️</div>
-        <div>
-          <div class="ci-label">Email</div>
-          <div class="ci-value">Mangalamgas_eruvadi@bharatgas.in</div>
-        </div>
-      </a>
-      <div class="contact-item reveal">
-        <div class="ci-icon">⏰</div>
-        <div>
-          <div class="ci-label">Working Hours</div>
-          <div class="ci-value">Mon – Sat: 9:00 AM – 6:00 PM</div>
-        </div>
-      </div>
-      <div class="contact-item reveal">
-        <div class="ci-icon">🏢</div>
-        <div>
-          <div class="ci-label">Authorised By</div>
-          <div class="ci-value">Bharat Petroleum Corporation Ltd (BPCL)</div>
+
+        <div class="contact-item reveal">
+          <div class="ci-icon">🏢</div>
+          <div>
+            <div class="ci-label">Authorised By</div>
+            <div class="ci-value">Bharat Petroleum Corporation Ltd</div>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-  <div class="contact-form reveal">
-    <h3>Send us a Message</h3>
-    <div class="form-row">
+
+    <form class="contact-form reveal" id="contactForm">
+      <h3>Send us a Message</h3>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label>First Name</label>
+          <input type="text" id="firstName" placeholder="Arjun" required>
+        </div>
+
+        <div class="form-group">
+          <label>Last Name</label>
+          <input type="text" id="lastName" placeholder="Kumar">
+        </div>
+      </div>
+
       <div class="form-group">
-        <label>First Name</label>
-        <input type="text" placeholder="Arjun">
+        <label>Phone Number</label>
+        <input type="tel" id="phone" placeholder="+91 XXXXX XXXXX" required>
       </div>
+
       <div class="form-group">
-        <label>Last Name</label>
-        <input type="text" placeholder="Kumar">
+        <label>Service Required</label>
+        <select id="service">
+          <option>Domestic Cylinder Booking</option>
+          <option>New Connection</option>
+          <option>Commercial Gas</option>
+          <option>Industrial LPG</option>
+          <option>Home Appliances</option>
+          <option>Other Enquiry</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>Message</label>
+        <textarea id="message" rows="4" placeholder="Tell us more about your requirement…" required></textarea>
+      </div>
+
+      <button type="submit" class="form-submit">Send via WhatsApp</button>
+    </form>
+  </section>
+
+  <div class="maps-section">
+    <div class="map-card reveal">
+      <div class="map-card-header">
+        <span>📍</span>
+        <div>
+          <h4>Office Location</h4>
+          <p>Mangalam Gas Agency, Eruvadi</p>
+        </div>
+      </div>
+
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d1000!2d77.6063183!3d8.4339444!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e1!3m2!1sen!2sin!4v1700000000000"
+        height="260"
+        allowfullscreen=""
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade">
+      </iframe>
+
+      <div class="map-card-footer">
+        <p>Eruvadi, Tamil Nadu</p>
+        <a href="https://www.google.com/maps/place/8%C2%B026'02.2%22N+77%C2%B036'22.8%22E/@8.4339444,77.6063183,1122m/data=!3m2!1e3!4b1!4m4!3m3!8m2!3d8.4339444!4d77.6063183?entry=ttu" target="_blank" class="map-dir-btn">Get Directions →</a>
       </div>
     </div>
-    <div class="form-group">
-      <label>Phone Number</label>
-      <input type="tel" placeholder="+91 XXXXX XXXXX">
-    </div>
-    <div class="form-group">
-      <label>Service Required</label>
-      <select>
-        <option>Domestic Cylinder Booking</option>
-        <option>New Connection</option>
-        <option>Commercial Gas</option>
-        <option>Industrial LPG</option>
-        <option>Home Appliances</option>
-        <option>Other Enquiry</option>
-      </select>
-    </div>
-    <div class="form-group">
-      <label>Message</label>
-      <textarea rows="4" placeholder="Tell us more about your requirement…"></textarea>
-    </div>
-    <button class="form-submit">Send Message 🔥</button>
-  </div>
-</section>
 
-<!-- MAPS -->
-<div class="maps-section">
-  <div class="map-card reveal">
-    <div class="map-card-header">
-      <span>📍</span>
-      <div>
-        <h4>Office Location</h4>
-        <p>Mangalam Gas Agency, Eruvadi</p>
+    <div class="map-card reveal">
+      <div class="map-card-header">
+        <span>🏭</span>
+        <div>
+          <h4>Godown Location</h4>
+          <p>Mangalam Gas Godown, Eruvadi</p>
+        </div>
+      </div>
+
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d198!2d77.5914167!3d8.434745!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b0467002b559df3%3A0x5277bb97dd2196d9!2sMangalam%20gas%20godown!5e1!3m2!1sen!2sin!4v1700000000000"
+        height="260"
+        allowfullscreen=""
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade">
+      </iframe>
+
+      <div class="map-card-footer">
+        <p>Eruvadi, Tamil Nadu</p>
+        <a href="https://www.google.com/maps/place/Mangalam+gas+godown/@8.4345392,77.5912463,198m/data=!3m1!1e3!4m12!1m5!3m4!2zOMKwMjYnMDIuMiJOIDc3wrAzNicyMi44IkU!8m2!3d8.4339444!4d77.6063183!3m5!1s0x3b0467002b559df3:0x5277bb97dd2196d9!8m2!3d8.434745!4d77.5914167!16s%2Fg%2F11xtr6nwrj?entry=ttu" target="_blank" class="map-dir-btn">Get Directions →</a>
       </div>
     </div>
-    <iframe
-      src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d1000!2d77.6063183!3d8.4339444!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e1!3m2!1sen!2sin!4v1700000000000"
-      height="260"
-      allowfullscreen="" loading="lazy"
-      referrerpolicy="no-referrer-when-downgrade">
-    </iframe>
-    <div class="map-card-footer">
-      <p>Eruvadi, Tamil Nadu</p>
-      <a href="https://www.google.com/maps/place/8%C2%B026'02.2%22N+77%C2%B036'22.8%22E/@8.4339444,77.6063183,1122m/data=!3m2!1e3!4b1!4m4!3m3!8m2!3d8.4339444!4d77.6063183?entry=ttu&g_ep=EgoyMDI2MDQyMC4wIKXMDSoASAFQAw%3D%3D" target="_blank" class="map-dir-btn">Get Directions →</a>
-    </div>
   </div>
-  <div class="map-card reveal">
-    <div class="map-card-header">
-      <span>🏭</span>
-      <div>
-        <h4>Godown Location</h4>
-        <p>Mangalam Gas Godown, Eruvadi</p>
-      </div>
-    </div>
-    <iframe
-      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d198!2d77.5914167!3d8.434745!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b0467002b559df3%3A0x5277bb97dd2196d9!2sMangalam%20gas%20godown!5e1!3m2!1sen!2sin!4v1700000000000"
-      height="260"
-      allowfullscreen="" loading="lazy"
-      referrerpolicy="no-referrer-when-downgrade">
-    </iframe>
-    <div class="map-card-footer">
-      <p>Eruvadi, Tamil Nadu</p>
-      <a href="https://www.google.com/maps/place/Mangalam+gas+godown/@8.4345392,77.5912463,198m/data=!3m1!1e3!4m12!1m5!3m4!2zOMKwMjYnMDIuMiJOIDc3wrAzNicyMi44IkU!8m2!3d8.4339444!4d77.6063183!3m5!1s0x3b0467002b559df3:0x5277bb97dd2196d9!8m2!3d8.434745!4d77.5914167!16s%2Fg%2F11xtr6nwrj?entry=ttu" target="_blank" class="map-dir-btn">Get Directions →</a>
-    </div>
-  </div>
-</div>
 
-<!-- FOOTER -->
-<footer>
-  <p>© 2025 Mangalam Gas Agency, Eruvadi. All rights reserved.</p>
-  <div class="footer-links">
-    <a href="#about">About</a>
-    <a href="#services">Services</a>
-    <a href="#contact">Contact</a>
-  </div>
-  <div class="bp-logo">
-    <div class="bp-dot">BP</div>
-    <span>Authorised Bharatgas Distributor</span>
-  </div>
-</footer>
+  <footer>
+    <p>© 2025 Mangalam Gas Agency, Eruvadi. All rights reserved.</p>
 
-<script>
-  const reveals = document.querySelectorAll('.reveal');
-  const io = new IntersectionObserver((entries)=>{
-    entries.forEach(e=>{
-      if(e.isIntersecting){ e.target.classList.add('visible'); }
+    <div class="footer-links">
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#contact">Contact</a>
+    </div>
+
+    <div class="bp-logo">
+      <img src="assets/bharatgas-logo.png" alt="Bharatgas Logo">
+      <span>Authorised Bharatgas Distributor</span>
+    </div>
+  </footer>
+
+  <script>
+    const reveals = document.querySelectorAll('.reveal');
+
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    reveals.forEach(item => io.observe(item));
+
+    window.addEventListener('scroll', () => {
+      document.querySelector('nav').style.boxShadow = window.scrollY > 30
+        ? '0 4px 30px rgba(0,20,60,.4)'
+        : '0 4px 30px rgba(0,20,60,.25)';
     });
-  },{ threshold:.1 });
-  reveals.forEach(r=>io.observe(r));
 
-  window.addEventListener('scroll',()=>{
-    document.querySelector('nav').style.boxShadow = window.scrollY > 30
-      ? '0 4px 30px rgba(0,20,60,.4)' : '0 4px 30px rgba(0,20,60,.25)';
-  });
-</script>
+    document.getElementById("contactForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+
+      const firstName = document.getElementById("firstName").value.trim();
+      const lastName = document.getElementById("lastName").value.trim();
+      const phone = document.getElementById("phone").value.trim();
+      const service = document.getElementById("service").value;
+      const message = document.getElementById("message").value.trim();
+
+      const fullName = `${firstName} ${lastName}`.trim();
+
+      const whatsappMessage =
+`Hello Mangalam Gas Agency,
+
+Name: ${fullName}
+Phone: ${phone}
+Service Required: ${service}
+
+Message:
+${message}`;
+
+      const whatsappNumber = "919445210793";
+
+      const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`;
+
+      window.open(whatsappURL, "_blank");
+
+      document.getElementById("contactForm").reset();
+    });
+  </script>
+
 </body>
 </html>
